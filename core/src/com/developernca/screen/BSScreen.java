@@ -65,4 +65,5 @@ public class BSScreen extends ScreenAdapter implements InputProcessor {
     public boolean scrolled(int amount) {
         return false;
     }
+
 }

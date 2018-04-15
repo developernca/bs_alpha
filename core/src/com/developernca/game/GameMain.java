@@ -5,17 +5,16 @@ import com.developernca.utility.AndroidSpec;
 
 public class GameMain extends BSGame {
 
-    public static AndroidSpec as;
     public SplashScreen splashScreen;
 
     public GameMain(AndroidSpec androidSpec, ActivityConnector activityConnector) {
-        super(activityConnector);
-        as = androidSpec;
+        super(activityConnector, androidSpec);
     }
 
     @Override
     public void create() {
-        activityConnector.connectToActivity();
+        super.create();
+        // screens
         splashScreen = new SplashScreen(this);
         setScreen(splashScreen);
     }

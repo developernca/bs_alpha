@@ -11,7 +11,7 @@ package com.developernca.utility;
 
 public class AndroidSpec {
     /**
-     * Get base asset folder (--dpi).
+     * Get base asset folder name without trailing slash. (--dpi).
      * The variable name baf is short for
      * [base asset folder]
      */
