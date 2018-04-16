@@ -14,7 +14,7 @@ public class StillAtlasActor extends BaseActor {
 
     private TextureRegion region;
 
-    StillAtlasActor(float x, float y, TextureRegion region) {
+    public StillAtlasActor(float x, float y, TextureRegion region) {
         super(x, y);
         this.region = region;
         setX(x);

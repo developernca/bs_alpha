@@ -18,11 +18,11 @@ class BaseActor extends Actor {
         this.y = y;
     }
 
-    void setSelfOriginToCenter() {
+    public void setSelfOriginToCenter() {
         setOrigin(getWidth() / 2, getHeight() / 2);
     }
 
-    void setOriginToScreenCenter() {
+    public void setOriginToScreenCenter() {
         setPosition(BSGame.centerX - getWidth() / 2, BSGame.centerY - getHeight() / 2);
     }
 

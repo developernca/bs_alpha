@@ -1,0 +1,54 @@
+atlas1.png
+size: 896, 922
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+cloud1
+  rotate: false
+  xy: 0, 0
+  size: 194, 142
+  orig: 194, 142
+  offset: 0, 0
+  index: -1
+cloud2
+  rotate: false
+  xy: 194, 0
+  size: 194, 142
+  orig: 194, 142
+  offset: 0, 0
+  index: -1
+cloud3
+  rotate: false
+  xy: 388, 0
+  size: 194, 142
+  orig: 194, 142
+  offset: 0, 0
+  index: -1
+cloud4
+  rotate: false
+  xy: 582, 0
+  size: 194, 142
+  orig: 194, 142
+  offset: 0, 0
+  index: -1
+game_name
+  rotate: false
+  xy: 0, 142
+  size: 640, 300
+  orig: 640, 300
+  offset: 0, 0
+  index: -1
+looper
+  rotate: false
+  xy: 0, 442
+  size: 640, 480
+  orig: 640, 480
+  offset: 0, 0
+  index: -1
+play_btn
+  rotate: false
+  xy: 640, 442
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
