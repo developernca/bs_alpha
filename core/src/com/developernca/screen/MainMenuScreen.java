@@ -1,8 +1,12 @@
 package com.developernca.screen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.developernca.actor.BladeActor;
 import com.developernca.actor.CloudActor;
 import com.developernca.actor.GameTitleActor;
 import com.developernca.actor.StillAtlasActor;
@@ -18,7 +22,8 @@ import com.developernca.game.BSGame;
 public class MainMenuScreen extends BSScreen {
 
     CloudActor cloudActor1, cloudActor2, cloudActor3, cloudActor4;// clouds
-    StillAtlasActor playButtonActor;// menu buttons
+    BladeActor playButtonActor;// menu buttons
+    Sound playBtnClickSound;
     GameTitleActor gameTitleActor; // game name text
     Stage midStage;// for animation
     Stage uiStage; // for menu items
@@ -34,10 +39,8 @@ public class MainMenuScreen extends BSScreen {
         cloudActor2 = new CloudActor(0, 0, game.atlas1.findRegion("cloud2"));
         cloudActor3 = new CloudActor(0, 0, game.atlas1.findRegion("cloud3"));
         cloudActor4 = new CloudActor(0, 0, game.atlas1.findRegion("cloud4"));
-        // initialize menu butttons
-        TextureRegion playBtnRegion = game.atlas1.findRegion("play_btn");
-        playButtonActor = new StillAtlasActor(0, 0, playBtnRegion);
-        playButtonActor.setSize(playBtnRegion.getRegionWidth(), playBtnRegion.getRegionHeight());
+        // initialize menu buttons
+        playButtonActor = new BladeActor(0, 0, game.atlas1.findRegion("play_btn"), true);
         playButtonActor.setSelfOriginToCenter();
         playButtonActor.setOriginToScreenCenter();
         // initialize title
@@ -52,7 +55,15 @@ public class MainMenuScreen extends BSScreen {
         // ui stage
         uiStage.addActor(gameTitleActor);
         uiStage.addActor(playButtonActor);
+        // sound for button click
+        playBtnClickSound = Gdx.audio.newSound(Gdx.files.internal("audio/sound_playbtn_click.wav"));
+    }
+
+    @Override
+    public void show() {
+        super.show();
         Gdx.input.setInputProcessor(this);
+        // BSGame.playBtnSound.play();
     }
 
     @Override
@@ -67,7 +78,12 @@ public class MainMenuScreen extends BSScreen {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        System.out.println("Inside td => MainMenuScreen...");
+        if (playButtonActor.isTouched(screenX, Gdx.graphics.getHeight() - screenY)) {
+            Action rotation1 = Actions.rotateBy(-360, 0.5f);
+            playButtonActor.addAction(rotation1);
+        }
         return true;
     }
+
+
 }

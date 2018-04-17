@@ -2,6 +2,7 @@ package com.developernca.game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.developernca.utility.AndroidSpec;
@@ -22,6 +23,7 @@ public class BSGame extends Game {
     public static float centerY;
     public static float gw;
     public static float gh;
+    public static Sound playBtnSound;
 
     public interface ActivityConnector {
         void connectToActivity();
@@ -44,6 +46,8 @@ public class BSGame extends Game {
         i18NBundle = I18NBundle.createBundle(Gdx.files.internal("strings/val"), Locale.ENGLISH);
         // load all necessary texture atlas
         atlas1 = new TextureAtlas(as.baf + "/" + Gdx.files.internal("atlas1.txt"));
+        // sound
+        playBtnSound = Gdx.audio.newSound(Gdx.files.internal("audio/sound_playbtn_click.wav"));
     }
 
     public ActivityConnector getActivityConnector() {
