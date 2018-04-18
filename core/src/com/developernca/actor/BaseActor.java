@@ -68,8 +68,8 @@ class BaseActor extends Actor {
     protected boolean isTouched(int touchX, int touchY) {
         occupyX = getX() + getWidth();
         occupyY = getY() + getHeight();
-        return (touchX >= x && touchX <= occupyX)
-                && (touchY >= y && touchY <= occupyY);
+        return (touchX >= getX() && touchX <= occupyX)
+                && (touchY >= getY() && touchY <= occupyY);
     }
 
 }

@@ -1,5 +1,7 @@
 package com.developernca.utility;
 
+import java.util.Locale;
+
 /**
  * Created on 4/11/2018.
  * <p>
@@ -16,11 +18,13 @@ public class AndroidSpec {
      * [base asset folder]
      */
     public String baf;
+    public Locale defaultLoc;
     private AndroidDpi androidDpi;
 
-    public AndroidSpec(String baf, AndroidDpi androidDpi) {
+    public AndroidSpec(String baf, AndroidDpi androidDpi, Locale defaultLoc) {
         this.baf = baf;
         this.androidDpi = androidDpi;
+        this.defaultLoc = defaultLoc;
     }
 
     public enum AndroidDpi {

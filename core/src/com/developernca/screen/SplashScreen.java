@@ -31,7 +31,7 @@ public class SplashScreen extends BSScreen {
         // actorLogo
         actorLogo = new LogoActor(100.0f, 100.0f, game.atlas1.findRegion("looper"));
         // label [tap anywhere]
-        lblTapAnywhere = BSUtils.makeLabel(game.i18NBundle.get("tap_to_continue"), "fonts/keifont.ttf", Color.WHITE, (int) BSGame.as.pt(16.0f));
+        lblTapAnywhere = BSUtils.makeLabel(game.i18NBundle.get("tap_to_continue"), game.ttfName, Color.WHITE, (int) BSGame.as.pt(25.0f));
         lblTapAnywhere.setPosition(BSGame.centerX - lblTapAnywhere.getWidth() / 2, actorLogo.getY() - BSGame.as.pt(50.0f));
         lblTapAnywhere.setVisible(false);
         // add all actors to stage

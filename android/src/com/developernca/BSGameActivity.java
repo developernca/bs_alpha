@@ -1,18 +1,25 @@
 package com.developernca;
 
+import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.LocaleList;
 import android.support.annotation.Nullable;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.developernca.utility.AndroidSpec;
 
+import java.util.Locale;
+
 /**
+ * Base activity and it is not registered in manifest.
  * Created on 4/12/2018.
  *
  * @author Nyein Chan Aung
  * @since 1.0
  */
 
+@SuppressLint("Registered")
 public class BSGameActivity extends AndroidApplication {
 
     protected AndroidSpec andrSpec;
@@ -24,6 +31,7 @@ public class BSGameActivity extends AndroidApplication {
     }
 
     private void setDeviceSpecData() {
+        // Screen density and asset folder
         int dpi = (int) getResources().getDisplayMetrics().xdpi;
         String assetFolder;
         AndroidSpec.AndroidDpi androidDpi;
@@ -46,6 +54,14 @@ public class BSGameActivity extends AndroidApplication {
             assetFolder = "xxxhdpi";
             androidDpi = AndroidSpec.AndroidDpi.XXXHDPI;
         }
-        andrSpec = new AndroidSpec(assetFolder, androidDpi);
+        // Default locale
+        Locale loc;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            LocaleList ll = getResources().getConfiguration().getLocales();
+            loc = ll.get(0);
+        } else {
+            loc = getResources().getConfiguration().locale;
+        }
+        andrSpec = new AndroidSpec(assetFolder, androidDpi, loc);
     }
 }

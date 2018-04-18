@@ -45,7 +45,7 @@ public class BSUtils {
         fontParameter.color = fontColor;
         fontParameter.borderWidth = 0.0f;
         fontParameter.size = fontSize;
-        fontParameter.characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        fontParameter.characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ画面をタッチしてくださいキャッチャーレベルビギナー";
         return generator.generateFont(fontParameter);
     }
 }
