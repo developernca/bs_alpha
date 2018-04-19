@@ -25,7 +25,7 @@ public class BSGame extends Game {
     public static AndroidSpec as;
     public I18NBundle i18NBundle;
     public TextureAtlas atlas1;
-    public Sound playBtnSound;
+    public static Sound playBtnSound;
     public Preferences pref;
     public String ttfName;
 
@@ -66,7 +66,7 @@ public class BSGame extends Game {
         // load all necessary texture atlas
         atlas1 = new TextureAtlas(as.baf + "/" + Gdx.files.internal("atlas1.txt"));
         // sound
-        playBtnSound = Gdx.audio.newSound(Gdx.files.internal("audio/sound_playbtn_click.wav"));
+        playBtnSound = Gdx.audio.newSound(Gdx.files.internal("audio/sound_playbtn_click.mp3"));
     }
 
     public ActivityConnector getActivityConnector() {

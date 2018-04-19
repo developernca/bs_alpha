@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.developernca.screen.ActorScreenConnector;
 
 /**
  * Developer logo.
@@ -16,13 +17,22 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 public class LogoActor extends StillAtlasActor {
 
     private boolean isLogoAnimationStarted = false;
-    public boolean isLogoAnimationFinished = false;
+    private boolean doAnim;
+    private ActorScreenConnector screenConnector;
 
     public LogoActor(float x, float y, TextureRegion region) {
+        this(x, y, region, false);
+    }
+
+    public LogoActor(float x, float y, TextureRegion region, boolean doAnim) {
+        this(x, y, region, doAnim, null);
+    }
+
+    public LogoActor(float x, float y, TextureRegion region, boolean doAnim, ActorScreenConnector screenConnector) {
         super(x, y, region);
+        this.doAnim = doAnim;
+        this.screenConnector = screenConnector;
         setSize(region.getRegionWidth(), region.getRegionHeight());
-        setSelfOriginToCenter();
-        setOriginToScreenCenter();
     }
 
     @Override
@@ -33,7 +43,7 @@ public class LogoActor extends StillAtlasActor {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-        if (!isLogoAnimationStarted) {
+        if (doAnim && !isLogoAnimationStarted) {
             animateLogo();
             isLogoAnimationStarted = true;
         }
@@ -44,16 +54,18 @@ public class LogoActor extends StillAtlasActor {
      * make logo scale to be large and normal 2 times.
      */
     private void animateLogo() {
-        Action rotate = Actions.rotateBy(360, 0.5f);
-        Action logoEnlarge = Actions.scaleBy(0.5f, 0.5f, 0.5f);
-        Action logoNormal = Actions.scaleBy(-0.5f, -0.5f, 0.5f);
-        Action repeatAction = Actions.repeat(2, Actions.sequence(logoEnlarge, logoNormal));
-        Action runnableAction = Actions.run(this::setLogoAnimated);
-        addAction(Actions.sequence(rotate, repeatAction, runnableAction));
+        if (screenConnector != null) {
+            Action rotate = Actions.rotateBy(360, 0.5f);
+            Action logoEnlarge = Actions.scaleBy(0.5f, 0.5f, 0.5f);
+            Action logoNormal = Actions.scaleBy(-0.5f, -0.5f, 0.5f);
+            Action repeatAction = Actions.repeat(2, Actions.sequence(logoEnlarge, logoNormal));
+            Action runnableAction = Actions.run(this::connectToScreen);
+            addAction(Actions.sequence(rotate, repeatAction, runnableAction));
+        }
     }
 
-    private void setLogoAnimated() {
-        isLogoAnimationFinished = true;
+    private void connectToScreen() {
+        screenConnector.connect();
     }
 
 }

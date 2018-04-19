@@ -16,7 +16,7 @@ import com.developernca.utility.BSUtils;
  * @since 1.0
  */
 
-public class SplashScreen extends BSScreen {
+public class SplashScreen extends BSScreen implements ActorScreenConnector {
 
     private LogoActor actorLogo;
     private Label lblTapAnywhere;
@@ -29,7 +29,9 @@ public class SplashScreen extends BSScreen {
         bgStage = new Stage();
         // initialize actors
         // actorLogo
-        actorLogo = new LogoActor(100.0f, 100.0f, game.atlas1.findRegion("looper"));
+        actorLogo = new LogoActor(0.0f, 0.0f, game.atlas1.findRegion("looper"), true, this);
+        actorLogo.setSelfOriginToCenter();
+        actorLogo.setOriginToScreenCenter();
         // label [tap anywhere]
         lblTapAnywhere = BSUtils.makeLabel(game.i18NBundle.get("tap_to_continue"), game.ttfName, Color.WHITE, (int) BSGame.as.pt(25.0f));
         lblTapAnywhere.setPosition(BSGame.centerX - lblTapAnywhere.getWidth() / 2, actorLogo.getY() - BSGame.as.pt(50.0f));
@@ -37,21 +39,18 @@ public class SplashScreen extends BSScreen {
         // add all actors to stage
         bgStage.addActor(actorLogo);
         bgStage.addActor(lblTapAnywhere);
-        Gdx.input.setInputProcessor(this);
+
     }
 
     @Override
     public void show() {
         super.show();
+        Gdx.input.setInputProcessor(this);
     }
 
     @Override
     public void render(float delta) {
         super.render(delta);
-        if (actorLogo.isLogoAnimationFinished) {
-            lblTapAnywhere.setVisible(true);
-            canGotoNextScreen = true;
-        }
         Gdx.gl20.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         bgStage.act(delta);
         bgStage.draw();
@@ -59,10 +58,15 @@ public class SplashScreen extends BSScreen {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        System.out.println("Inside TD => SplashScreen");
         if (canGotoNextScreen) {
             game.setScreen(new MainMenuScreen(game));
         }
         return true;
+    }
+
+    @Override
+    public void connect() {
+        lblTapAnywhere.setVisible(true);
+        canGotoNextScreen = true;
     }
 }

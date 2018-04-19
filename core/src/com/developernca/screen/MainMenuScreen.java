@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.developernca.actor.BladeActor;
+import com.developernca.actor.MenuButtonActor;
 import com.developernca.actor.GameTitleActor;
 import com.developernca.game.BSGame;
 import com.developernca.utility.BSUtils;
@@ -21,7 +21,7 @@ import com.developernca.utility.BSUtils;
  */
 
 public class MainMenuScreen extends BSScreen {
-    private BladeActor playButtonActor;// menu buttons
+    private MenuButtonActor playButtonActor;// menu buttons
     private Sound playBtnClickSound;
     private Stage midStage;// for animation
     private Stage uiStage; // for menu items
@@ -37,14 +37,15 @@ public class MainMenuScreen extends BSScreen {
         // initialize clouds
         game.setupCloudActorList(midStage);
         // initialize menu buttons
-        playButtonActor = new BladeActor(0, 0, game.atlas1.findRegion("play_btn"), true);
+        playButtonActor = new MenuButtonActor(0, 0, game.atlas1.findRegion("play_btn"));
         playButtonActor.setSelfOriginToCenter();
         playButtonActor.setOriginToScreenCenter();
         // initialize title
         GameTitleActor gameTitleActor = new GameTitleActor(0, 0, game.atlas1.findRegion("game_name"));
         gameTitleActor.setY(playButtonActor.getY() + playButtonActor.getHeight() + BSGame.as.pt(30.0f));
         // initialize catcher level and level title Label
-        lblCatcherLevel = BSUtils.makeLabel(game.i18NBundle.get("catcher_level_beginner"), game.ttfName, Color.PURPLE, (int) BSGame.as.pt(25.0f));
+        lblCatcherLevel = BSUtils.makeLabel(game.i18NBundle.get("catcher_level_beginner"),
+                game.ttfName, Color.PURPLE, (int) BSGame.as.pt(25.0f));
         lblCatcherLevel.setPosition(BSGame.centerX - lblCatcherLevel.getWidth() / 2, BSGame.as.pt(15));
 
         lblCatcherLevelTitle = BSUtils.makeLabel(game.i18NBundle.get("catcher_level_title"), game.ttfName, Color.BLACK, (int) BSGame.as.pt(28.0f));
@@ -63,8 +64,8 @@ public class MainMenuScreen extends BSScreen {
     @Override
     public void show() {
         super.show();
+        playButtonActor.doPlayBtnAnim();
         Gdx.input.setInputProcessor(this);
-        // BSGame.playBtnSound.play();
     }
 
     @Override
@@ -82,9 +83,9 @@ public class MainMenuScreen extends BSScreen {
         if (playButtonActor.isTouched(screenX, Gdx.graphics.getHeight() - screenY)) {
             Action rotation1 = Actions.rotateBy(-360, 0.5f);
             playButtonActor.addAction(rotation1);
+            BSGame.playBtnSound.play();
         }
         return true;
     }
-
 
 }
