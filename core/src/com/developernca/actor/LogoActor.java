@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.developernca.game.BSGame;
 import com.developernca.screen.ActorScreenConnector;
 
 /**
@@ -56,8 +57,8 @@ public class LogoActor extends StillAtlasActor {
     private void animateLogo() {
         if (screenConnector != null) {
             Action rotate = Actions.rotateBy(360, 0.5f);
-            Action logoEnlarge = Actions.scaleBy(0.5f, 0.5f, 0.5f);
-            Action logoNormal = Actions.scaleBy(-0.5f, -0.5f, 0.5f);
+            Action logoEnlarge = Actions.scaleBy(BSGame.as.pt(0.15f), BSGame.as.pt(0.15f), 0.5f);
+            Action logoNormal = Actions.scaleBy(BSGame.as.pt(-0.15f), BSGame.as.pt(-0.15f), 0.5f);
             Action repeatAction = Actions.repeat(2, Actions.sequence(logoEnlarge, logoNormal));
             Action runnableAction = Actions.run(this::connectToScreen);
             addAction(Actions.sequence(rotate, repeatAction, runnableAction));

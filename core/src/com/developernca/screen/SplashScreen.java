@@ -59,7 +59,8 @@ public class SplashScreen extends BSScreen implements ActorScreenConnector {
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         if (canGotoNextScreen) {
-            game.setScreen(new MainMenuScreen(game));
+            BSGame.menuScreen = new MainMenuScreen(game);
+            game.setScreen(BSGame.menuScreen);
         }
         return true;
     }

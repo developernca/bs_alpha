@@ -30,7 +30,7 @@ public class CloudActor extends StillAtlasActor {
         // x position
         initialX = (-1) * getWidth();
         selfX = initialX;
-        // maximum x
+        // maximum xm
         maxX = BSGame.gw + getWidth();
         // set position x and y value, which is from one third of screen to max y value
         setPosition(initialX, MathUtils.random(oneThirdOfScreen, maxY));

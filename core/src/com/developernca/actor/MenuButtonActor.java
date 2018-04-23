@@ -37,7 +37,7 @@ public class MenuButtonActor extends StillAtlasActor {
     }
 
     /**
-     * Animation for play button.
+     * Shake animation for play button.
      */
     public void doPlayBtnAnim() {
         Action left = Actions.moveBy(BSGame.as.pt(-2.0f), 0.0f, 0.0f);

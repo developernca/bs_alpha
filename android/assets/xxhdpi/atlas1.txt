@@ -3,30 +3,37 @@ size: 896, 922
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-cloud1
+blade_lvl1
   rotate: false
   xy: 0, 0
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: -1
+cloud1
+  rotate: false
+  xy: 96, 0
   size: 194, 142
   orig: 194, 142
   offset: 0, 0
   index: -1
 cloud2
   rotate: false
-  xy: 194, 0
+  xy: 290, 0
   size: 194, 142
   orig: 194, 142
   offset: 0, 0
   index: -1
 cloud3
   rotate: false
-  xy: 388, 0
+  xy: 484, 0
   size: 194, 142
   orig: 194, 142
   offset: 0, 0
   index: -1
 cloud4
   rotate: false
-  xy: 582, 0
+  xy: 678, 0
   size: 194, 142
   orig: 194, 142
   offset: 0, 0

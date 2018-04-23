@@ -12,7 +12,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class StillAtlasActor extends BaseActor {
 
-    private TextureRegion region;
+    protected TextureRegion region;
 
     public StillAtlasActor(float x, float y, TextureRegion region) {
         super(x, y);
