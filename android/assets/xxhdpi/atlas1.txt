@@ -45,6 +45,13 @@ game_name
   orig: 640, 300
   offset: 0, 0
   index: -1
+live
+  rotate: false
+  xy: 640, 142
+  size: 230, 48
+  orig: 230, 48
+  offset: 0, 0
+  index: -1
 looper
   rotate: false
   xy: 0, 442

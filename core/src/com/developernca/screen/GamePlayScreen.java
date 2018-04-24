@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.developernca.actor.BirdActor;
 import com.developernca.actor.BladeActor;
+import com.developernca.actor.PlayerLiveActor;
 import com.developernca.actor.TouchAreaActor;
 import com.developernca.game.BSGame;
 import com.developernca.utility.BSUtils;
@@ -32,6 +33,8 @@ public class GamePlayScreen extends BSScreen {
     private int actualYTouchPos;
     private ArrayList<BirdActor> birdList;
     private Label lblHighScore;
+    private String scoreDefaultTxt;
+    private PlayerLiveActor playerLiveActor;
 
     public GamePlayScreen(BSGame game) {
         super(game);
@@ -46,8 +49,11 @@ public class GamePlayScreen extends BSScreen {
         // initialize touch area
         touchAreaActor = new TouchAreaActor(0.0f, 300.0f, Gdx.files.internal(BSGame.as.baf + "/touch_area.png"));
         // label high score
-        lblHighScore = BSUtils.makeLabel(game.i18NBundle.get("score"), game.ttfName, Color.BLACK, (int) BSGame.as.pt(18.0f));
-        lblHighScore.setPosition(BSGame.gw - lblHighScore.getWidth(), BSGame.gh - lblHighScore.getHeight());
+        scoreDefaultTxt = game.i18NBundle.get("score") + " : " + String.format("%04d", 0);
+        lblHighScore = BSUtils.makeLabel(scoreDefaultTxt, game.ttfName, Color.BLACK, (int) BSGame.as.pt(18.0f));
+        lblHighScore.setPosition(0.0f, BSGame.gh - lblHighScore.getHeight());
+        // player live actor
+        playerLiveActor = new PlayerLiveActor(0, 0, game.atlas1.findRegion("live"));
         // blade actor
         bladeActor = new BladeActor(0.0f, 0.0f, game.atlas1.findRegion("blade_lvl1"));
         bladeActor.setVisible(false);
@@ -61,6 +67,7 @@ public class GamePlayScreen extends BSScreen {
         gameStage.addActor(bladeActor);
         // ui stage
         uiStage.addActor(lblHighScore);
+        uiStage.addActor(playerLiveActor);
     }
 
     @Override
