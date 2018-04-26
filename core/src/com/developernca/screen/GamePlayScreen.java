@@ -31,6 +31,7 @@ public class GamePlayScreen extends BSScreen {
     private TouchAreaActor touchAreaActor;
     private BladeActor bladeActor;
     private int actualYTouchPos;
+    private int bladeHalfWidth;
     private ArrayList<BirdActor> birdList;
     private Label lblHighScore;
     private String scoreDefaultTxt;
@@ -55,8 +56,8 @@ public class GamePlayScreen extends BSScreen {
         // player live actor
         playerLiveActor = new PlayerLiveActor(0, 0, game.atlas1.findRegion("live"));
         // blade actor
-        bladeActor = new BladeActor(0.0f, 0.0f, game.atlas1.findRegion("blade_lvl1"));
-        bladeActor.setVisible(false);
+        bladeActor = new BladeActor(0.0f, BSGame.gh, game.atlas1.findRegion("blade_lvl1"));
+        bladeHalfWidth = (int) bladeActor.getWidth() / 2;
         // bird actors
         birdList = new ArrayList<>();
         birdList.add(birdActor);
@@ -110,8 +111,8 @@ public class GamePlayScreen extends BSScreen {
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         actualYTouchPos = BSGame.gh - screenY;
-        if (touchAreaActor.isTouched(screenX, actualYTouchPos) && !bladeActor.isVisible()) {
-            bladeActor.spawn(screenX, actualYTouchPos);
+        if (touchAreaActor.isTouched(screenX, actualYTouchPos) && bladeActor.canSpawn()) {
+            bladeActor.spawn(screenX - bladeHalfWidth, actualYTouchPos);
         }
         return true;
     }
@@ -123,8 +124,7 @@ public class GamePlayScreen extends BSScreen {
 
     private void update() {
         if (checkBladeAndActorOverlap()) {
-            bladeActor.setVisible(false);
-            bladeActor.setXY(0.0f, 0.0f);
+
         }
     }
 
