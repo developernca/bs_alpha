@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.LocaleList;
 import android.support.annotation.Nullable;
+import android.view.View;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.developernca.utility.AndroidSpec;
@@ -28,6 +29,11 @@ public class BSGameActivity extends AndroidApplication {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setDeviceSpecData();
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
     }
 
     private void setDeviceSpecData() {

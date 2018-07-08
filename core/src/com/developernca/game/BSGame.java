@@ -3,11 +3,11 @@ package com.developernca.game;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.I18NBundle;
-import com.badlogic.gdx.utils.Logger;
 import com.developernca.actor.CloudActor;
 import com.developernca.screen.MainMenuScreen;
 import com.developernca.utility.AndroidSpec;
@@ -23,31 +23,35 @@ import java.util.Locale;
  */
 
 public class BSGame extends Game {
-
-    // preferences name
-    private static final String PREF_NAME = "bs_pref";
-
-    // preference keys
-    private static final String H_SCORE = "hs";// high score
-
-    // preference data
+    // preferences
+    private static final String PREF_NAME = "bs_pref";// preferences name
+    public static final String H_SCORE = "hs";// high score key
+    public Preferences pref;
+    // numbers
     public static int highScore;
-
+    public static int bladeLevel;
+    public static float bladeSpeed;
+    // audio
+    public static Sound playBtnSound;
+    public static Sound bottleBreakSound;
+    public static Music gamePlayBgMusic;
+    public static Music gameUiBgMusic;
+    // TextureAtlas
+    public static TextureAtlas atlas1;
+    // Android Application related data
     public ActivityConnector activityConnector;
     public static AndroidSpec as;
+    // Localization, fonts and  strings
     public I18NBundle i18NBundle;
-    public TextureAtlas atlas1;
-    public static Sound playBtnSound;
-    public Preferences pref;
     public String ttfName;
-
+    public static String fontParameterCharacters;
+    // Geometric
     public static float centerX;
     public static float centerY;
     public static int gw;
     public static int gh;
+
     public static MainMenuScreen menuScreen;
-    public static int bladeLevel;
-    public static float bladeSpeed;
     /**
      * Currently, there are 4 cloud images in assets.
      */
@@ -77,15 +81,19 @@ public class BSGame extends Game {
         gh = Gdx.graphics.getHeight();
         // initialize language setting
         i18NBundle = I18NBundle.createBundle(Gdx.files.internal("strings/val"), as.defaultLoc);
+        fontParameterCharacters = i18NBundle.get("font_param_characters");
         if (as.defaultLoc.getISO3Language().equals(Locale.JAPANESE.getISO3Language())) {
             ttfName = "fonts/keifont.ttf";
         } else {
-            ttfName = "fonts/chlorinar.regular.ttf";
+            ttfName = "fonts/peace_sans.otf";
         }
         // load all necessary texture atlas
         atlas1 = new TextureAtlas(as.baf + "/" + Gdx.files.internal("atlas1.txt"));
-        // sound
+        // audio
         playBtnSound = Gdx.audio.newSound(Gdx.files.internal("audio/sound_playbtn_click.mp3"));
+        bottleBreakSound = Gdx.audio.newSound(Gdx.files.internal("audio/bottle_break.mp3"));
+        gamePlayBgMusic = Gdx.audio.newMusic(Gdx.files.internal("audio/background1.mp3"));
+        gameUiBgMusic = Gdx.audio.newMusic(Gdx.files.internal("audio/background1.mp3"));
         // initialize blade data
         initBladeData();
     }

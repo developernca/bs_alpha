@@ -10,14 +10,20 @@ import com.badlogic.gdx.graphics.Camera;
  * @since 1.0
  */
 
-public class CameraShaker{
+public class CameraShaker {
     private float shakeX;
     private float shakeY;
+    private final int maxShake;
     private int shakeCount = 1;
 
     public CameraShaker(float shakeX, float shakeY) {
+        this(shakeX, shakeY, 25);
+    }
+
+    public CameraShaker(float shakeX, float shakeY, int maxShake) {
         this.shakeX = shakeX;
         this.shakeY = shakeY;
+        this.maxShake = maxShake;
     }
 
     /**
@@ -32,13 +38,12 @@ public class CameraShaker{
             shakeY *= (-1);
             camera.translate(shakeX, shakeY, 0.0f);
         }
-        if (shakeCount < 25) {
-            ++shakeCount;
-            return true;
-        } else {
+        if (shakeCount > maxShake) {
             shakeCount = 1;
             return false;
         }
+        ++shakeCount;
+        return true;
     }
 
     /**

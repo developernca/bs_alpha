@@ -25,7 +25,6 @@ public class GameMainActivity extends BSGameActivity {
         AdView adv = (AdView) findViewById(R.id.idAdvGameMain);
         AdRequest adr = new AdRequest.Builder().build();
         adv.loadAd(adr);
-        adv.loadAd(adr);
     }
 
     public void connectToActivity() {

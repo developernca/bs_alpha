@@ -17,16 +17,18 @@ import com.developernca.game.BSGame;
 
 public class TouchAreaActor extends BaseActor {
 
+    public final float touchAreaTopYPos;
     private Texture repeatedTexture;
     private TextureRegion region;
 
     public TouchAreaActor(float x, float y, FileHandle repeatedTextureFileHandle) {
         super(x, y);
         this.repeatedTexture = new Texture(repeatedTextureFileHandle);
-        repeatedTexture.setWrap(Texture.TextureWrap.MirroredRepeat, Texture.TextureWrap.MirroredRepeat);
+        repeatedTexture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
         setSize(BSGame.gw, this.repeatedTexture.getHeight());
         setPosition(x, y);
         this.region = new TextureRegion(repeatedTexture, (int) getWidth(), (int) getHeight());
+        touchAreaTopYPos = getHeight() + getX();
     }
 
     @Override

@@ -17,7 +17,7 @@ public class BSScreen extends ScreenAdapter implements InputProcessor {
 
     protected BSGame game;
 
-    public BSScreen(BSGame game) {
+    BSScreen(BSGame game) {
         this.game = game;
     }
 

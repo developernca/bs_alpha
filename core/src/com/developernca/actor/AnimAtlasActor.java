@@ -20,12 +20,16 @@ public class AnimAtlasActor extends BaseActor {
      * Atlas region to use in draw method.
      */
     private TextureRegion region;
-    protected float frameDuration;
-    protected float elapsedTime;
-    protected float width;
-    protected float height;
+    private float frameDuration;
+    float elapsedTime;
+    private float width;
+    private float height;
 
     AnimAtlasActor(float x, float y, float frameDuration, TextureAtlas spriteAtlas) {
+        this(x, y, frameDuration, spriteAtlas, Animation.PlayMode.LOOP);
+    }
+
+    AnimAtlasActor(float x, float y, float frameDuration, TextureAtlas spriteAtlas, Animation.PlayMode loop) {
         super(x, y);
         setPosition(x, y);
         this.elapsedTime = 0.0f;
@@ -33,7 +37,7 @@ public class AnimAtlasActor extends BaseActor {
         this.width = spriteAtlas.getRegions().get(0).getRegionWidth();
         this.height = spriteAtlas.getRegions().get(0).getRegionHeight();
         setSize(width, height);
-        animation = new Animation<>(frameDuration, spriteAtlas.getRegions(), Animation.PlayMode.LOOP);
+        animation = new Animation<>(frameDuration, spriteAtlas.getRegions(), loop);
     }
 
     @Override

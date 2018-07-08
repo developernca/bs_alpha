@@ -4,12 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@id/idGameMainScreens"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.1"></RelativeLayout>
-
     <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@id/idAdvGameMain"
         android:layout_width="match_parent"
@@ -17,5 +11,11 @@
         android:background="@android:color/darker_gray"
         ads:adSize="SMART_BANNER"
         ads:adUnitId="ca-app-pub-3940256099942544/6300978111" />
+
+    <RelativeLayout
+        android:id="@id/idGameMainScreens"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1" />
 
 </LinearLayout>

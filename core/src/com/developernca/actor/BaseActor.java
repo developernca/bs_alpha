@@ -17,8 +17,6 @@ class BaseActor extends Actor {
     protected float x;
     protected float y;
     public Circle boundaryCircle;
-    private static float occupyX;
-    private static float occupyY;
 
     BaseActor(float x, float y) {
         this.x = x;
@@ -37,6 +35,16 @@ class BaseActor extends Actor {
      */
     public void setOriginToScreenCenter() {
         setPosition(BSGame.centerX - getWidth() / 2, BSGame.centerY - getHeight() / 2);
+    }
+
+    /**
+     * Get center x,y value of current screen related to this actor. Index 0 will be x and 1
+     * will be 1 => [x, y].
+     *
+     * @return a float array
+     */
+    public float[] getOriginToScreenCenter() {
+        return new float[]{BSGame.centerX - getWidth() / 2.0f, BSGame.centerY - getHeight() / 2.0f};
     }
 
     /**
@@ -65,11 +73,23 @@ class BaseActor extends Actor {
      * @param touchY touch y position in screen.
      * @return boolean true on touch, otherwise false.
      */
-    protected boolean isTouched(int touchX, int touchY) {
-        occupyX = getX() + getWidth();
-        occupyY = getY() + getHeight();
+    public boolean isTouched(int touchX, int touchY) {
+        float occupyX = getX() + getWidth();
+        float occupyY = getY() + getHeight();
         return (touchX >= getX() && touchX <= occupyX)
                 && (touchY >= getY() && touchY <= occupyY);
+    }
+
+    /**
+     * Check whether the actor is appearing on the screen or not.
+     *
+     * @return true if actor is visible on the screen, false otherwise
+     */
+    public boolean isOnScreen() {
+        if ((getX() + getWidth() > BSGame.gw) || (getY() + getHeight() > BSGame.gh)) {// Not visible on screen
+            return false;
+        }
+        return true;
     }
 
 }

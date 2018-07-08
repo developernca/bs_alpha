@@ -1,68 +1,145 @@
 atlas1.png
-size: 896, 922
+size: 850, 1559
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 blade_lvl1
   rotate: false
-  xy: 0, 0
-  size: 96, 96
-  orig: 96, 96
+  xy: 408, 0
+  size: 72, 72
+  orig: 72, 72
+  offset: 0, 0
+  index: -1
+blade_lvl2
+  rotate: false
+  xy: 556, 0
+  size: 72, 72
+  orig: 72, 72
+  offset: 0, 0
+  index: -1
+blade_lvl3
+  rotate: false
+  xy: 482, 0
+  size: 72, 72
+  orig: 72, 72
+  offset: 0, 0
+  index: -1
+blade_lvl4
+  rotate: false
+  xy: 334, 0
+  size: 72, 72
+  orig: 72, 72
+  offset: 0, 0
+  index: -1
+bomb_bird_lvl0
+  rotate: false
+  xy: 704, 0
+  size: 72, 96
+  orig: 72, 96
+  offset: 0, 0
+  index: -1
+bomb_bird_lvl1
+  rotate: false
+  xy: 778, 0
+  size: 72, 96
+  orig: 72, 96
   offset: 0, 0
   index: -1
 cloud1
   rotate: false
-  xy: 96, 0
+  xy: 196, 98
   size: 194, 142
   orig: 194, 142
   offset: 0, 0
   index: -1
 cloud2
   rotate: false
-  xy: 290, 0
+  xy: 0, 98
   size: 194, 142
   orig: 194, 142
   offset: 0, 0
   index: -1
 cloud3
   rotate: false
-  xy: 484, 0
+  xy: 588, 98
   size: 194, 142
   orig: 194, 142
   offset: 0, 0
   index: -1
 cloud4
   rotate: false
-  xy: 678, 0
+  xy: 392, 98
   size: 194, 142
   orig: 194, 142
   offset: 0, 0
   index: -1
+exit
+  rotate: false
+  xy: 182, 242
+  size: 180, 180
+  orig: 180, 180
+  offset: 0, 0
+  index: -1
 game_name
   rotate: false
-  xy: 0, 142
+  xy: 0, 777
   size: 640, 300
   orig: 640, 300
   offset: 0, 0
   index: -1
+game_over
+  rotate: false
+  xy: 0, 500
+  size: 640, 275
+  orig: 640, 275
+  offset: 0, 0
+  index: -1
+levelup_txt
+  rotate: false
+  xy: 242, 0
+  size: 90, 60
+  orig: 90, 60
+  offset: 0, 0
+  index: -1
 live
   rotate: false
-  xy: 640, 142
-  size: 230, 48
-  orig: 230, 48
+  xy: 630, 0
+  size: 72, 96
+  orig: 72, 96
+  offset: 0, 0
+  index: -1
+live5
+  rotate: false
+  xy: 0, 0
+  size: 240, 48
+  orig: 240, 48
   offset: 0, 0
   index: -1
 looper
   rotate: false
-  xy: 0, 442
+  xy: 0, 1079
   size: 640, 480
   orig: 640, 480
   offset: 0, 0
   index: -1
+menu
+  rotate: false
+  xy: 0, 242
+  size: 180, 180
+  orig: 180, 180
+  offset: 0, 0
+  index: -1
 play_btn
   rotate: false
-  xy: 640, 442
+  xy: 546, 242
   size: 256, 256
   orig: 256, 256
+  offset: 0, 0
+  index: -1
+replay
+  rotate: false
+  xy: 364, 242
+  size: 180, 180
+  orig: 180, 180
   offset: 0, 0
   index: -1

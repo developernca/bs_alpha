@@ -17,8 +17,8 @@ public class StillAtlasActor extends BaseActor {
     public StillAtlasActor(float x, float y, TextureRegion region) {
         super(x, y);
         this.region = region;
-        setX(x);
-        setY(y);
+        setPosition(x, y);
+        setSize(region.getRegionWidth(), region.getRegionHeight());
     }
 
     @Override
